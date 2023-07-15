@@ -4,6 +4,10 @@ type Query {
     """
     courseMemberships(id: UUID!): [CourseMembership!]
     """
+    Retrieves a list of course memberships for each user in a list of user IDs
+    """
+    courseMembershipsBatched(ids: [UUID!]!): [[CourseMembership!]!]!
+    """
     Gets the publicly available information for a user with the specified ID.
     """
     publicUserInfo(id: UUID!): PublicUserInfo!
@@ -12,7 +16,12 @@ type Query {
     """
     publicUserInfoBatched(ids: [UUID!]!): [PublicUserInfo!]!
     """
-    Gets all of the user's information. Only available to the user themselves and privileged users.
+    Gets the user information of the currently authorized user.
+    """
+    currentUserInfo: UserInfo!
+    """
+    Gets all of the user information of the specified user.
+    Only available to the user themselves and privileged users.
     """
     userInfo(id: UUID!): UserInfo!
     """
