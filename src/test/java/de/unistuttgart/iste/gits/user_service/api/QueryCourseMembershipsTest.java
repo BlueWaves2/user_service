@@ -77,4 +77,47 @@ public class QueryCourseMembershipsTest {
                 .hasSize(2)
                 .contains(DTOList.get(0), DTOList.get(1));
     }
+
+    @Test
+    void testMembershipBatched(GraphQlTester tester) {
+        UUID user1Id = UUID.randomUUID();
+        UUID user2Id = UUID.randomUUID();
+
+        UUID course1Id = UUID.randomUUID();
+        UUID course2Id = UUID.randomUUID();
+
+        CourseMembershipEntity membership1 = CourseMembershipEntity.builder()
+                .userId(user1Id)
+                .courseId(course1Id)
+                .courseRole(CourseRole.STUDENT)
+                .build();
+        membershipRepository.save(membership1);
+
+        CourseMembershipEntity membership2 = CourseMembershipEntity.builder()
+                .userId(user2Id)
+                .courseId(course2Id)
+                .courseRole(CourseRole.ADMINISTRATOR)
+                .build();
+        membershipRepository.save(membership2);
+
+        String query = """
+                query($userIds: [UUID!]!) {
+                    courseMembershipsBatched(ids: $userIds) {
+                        userId
+                        courseId
+                        role
+                    }
+                }
+                """;
+
+        tester.document(query)
+                .variable("userIds", List.of(user1Id, user2Id))
+                .execute()
+                .path("courseMembershipsBatched[0][0].userId").entity(UUID.class).isEqualTo(user1Id)
+                .path("courseMembershipsBatched[0][0].courseId").entity(UUID.class).isEqualTo(course1Id)
+                .path("courseMembershipsBatched[0][0].role").entity(String.class).isEqualTo(CourseRole.STUDENT.toString())
+                .path("courseMembershipsBatched[1][0].userId").entity(UUID.class).isEqualTo(user2Id)
+                .path("courseMembershipsBatched[1][0].courseId").entity(UUID.class).isEqualTo(course2Id)
+                .path("courseMembershipsBatched[1][0].role").entity(String.class).isEqualTo(CourseRole.ADMINISTRATOR.toString());
+    }
 }
