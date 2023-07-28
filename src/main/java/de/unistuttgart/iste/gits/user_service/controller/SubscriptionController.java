@@ -23,6 +23,13 @@ public class SubscriptionController {
     @PostMapping(path = "/user-service/course-changes-pubsub")
     public Mono<Void> updateAssociation(@RequestBody(required = false) CloudEvent<CourseChangeEvent> cloudEvent, @RequestHeader Map<String, String> headers){
 
-        return Mono.fromRunnable( () -> membershipService.removeCourse(cloudEvent.getData()));
+        return Mono.fromRunnable(
+                () -> {
+                    try {
+                        membershipService.removeCourse(cloudEvent.getData());
+                    } catch (NullPointerException e) {
+                        log.error(e.getMessage());
+                    }
+                });
     }
 }
