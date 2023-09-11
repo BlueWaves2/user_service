@@ -1,7 +1,7 @@
 package de.unistuttgart.iste.gits.user_service.persistence.repository;
 
-import de.unistuttgart.iste.gits.user_service.persistence.dao.CourseMembershipEntity;
-import de.unistuttgart.iste.gits.user_service.persistence.dao.CourseMembershipPk;
+import de.unistuttgart.iste.gits.user_service.persistence.entity.CourseMembershipEntity;
+import de.unistuttgart.iste.gits.user_service.persistence.entity.CourseMembershipPk;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
