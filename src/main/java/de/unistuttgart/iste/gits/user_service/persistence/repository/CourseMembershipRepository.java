@@ -21,7 +21,11 @@ public interface CourseMembershipRepository extends JpaRepository<CourseMembersh
      */
     List<CourseMembershipEntity> findCourseMembershipEntitiesByUserIdOrderByCourseId(UUID userId);
 
-    List<CourseMembershipEntity> findCourseMembershipEntitiesByUserIdInOrderByCourseId(List<UUID> userIds);
-
+    /**
+     * Hibernate Query. Find Entities by Course ID. ORDERED BY User ID
+     *
+     * @param courseId Course ID
+     * @return List of Entities
+     */
     List<CourseMembershipEntity> findCourseMembershipEntitiesByCourseId(UUID courseId);
 }
