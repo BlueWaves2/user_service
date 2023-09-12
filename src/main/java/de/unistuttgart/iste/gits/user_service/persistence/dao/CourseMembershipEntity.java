@@ -1,5 +1,6 @@
 package de.unistuttgart.iste.gits.user_service.persistence.dao;
 
+import de.unistuttgart.iste.gits.generated.dto.UserRoleInCourse;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,7 +25,6 @@ public class CourseMembershipEntity {
     @Column(nullable = false)
     private UUID courseId;
 
-    @Column
-    private CourseRole courseRole;
-
+    @Column(name = "courseRole")
+    private UserRoleInCourse role;
 }
