@@ -5,7 +5,7 @@ import de.unistuttgart.iste.gits.common.event.CrudOperation;
 import de.unistuttgart.iste.gits.generated.dto.CourseMembership;
 import de.unistuttgart.iste.gits.generated.dto.UserRoleInCourse;
 import de.unistuttgart.iste.gits.user_service.mapper.MembershipMapper;
-import de.unistuttgart.iste.gits.user_service.persistence.dao.CourseMembershipEntity;
+import de.unistuttgart.iste.gits.user_service.persistence.entity.CourseMembershipEntity;
 import de.unistuttgart.iste.gits.user_service.persistence.repository.CourseMembershipRepository;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
