@@ -105,7 +105,7 @@ public class MembershipService {
     public void removeCourse(CourseChangeEvent changeEvent) throws IncompleteEventMessageException {
         // evaluate course Update message
         if (changeEvent.getCourseId() == null || changeEvent.getOperation() == null){
-            throw new IncompleteEventMessageException("incomplete message received: all fields of a message must be non-null");
+            throw new IncompleteEventMessageException(IncompleteEventMessageException.ERROR_INCOMPLETE_MESSAGE);
         }
         //only consider DELETE events
         if (!changeEvent.getOperation().equals(CrudOperation.DELETE)){
