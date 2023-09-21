@@ -25,8 +25,12 @@ The User Service has two main roles in our system:
 | spring.datasource.password | Database password                  | root                                          | *secret*                                                       |
 | DAPR_HTTP_PORT             | Dapr HTTP Port                     | 5000                                          | 3500                                                           |
 | server.port                | Port on which the application runs | 5001                                          | 5001                                                           |
-| KEYCLOAK_URL               | Port on which the application runs | http://localhost:9009/                        | http://keycloak/keycloak                                       |
-| KEYCLOAK_PASSWORD          | Port on which the application runs | admin                                         | *secret*                                                       |
+| KEYCLOAK_URL               | Keycloak URL                       | http://localhost:9009/                        | http://keycloak/keycloak                                       |
+| KEYCLOAK_PASSWORD          | Keycloak admin password            | admin                                         | *secret*                                                       |
+| keycloak.clientId          | Keycloak client ID                 | admin-cli                                     | -                                                              |
+| keycloak.masterRealm       | Keycloak master realm              | master                                        | -                                                              |
+| keycloak.realm             | Keycloak realm for the application | GITS                                          | -                                                              |
+| keycloak.username          | Keycloak admin username            | admin                                         | -                                                              |
 
 ### Other properties
 | Name                                    | Description                               | Value in Dev Environment                | Value in Prod Environment               |
@@ -40,10 +44,6 @@ The User Service has two main roles in our system:
 | spring.sql.init.continue-on-error       | Continue on SQL init error                | true                                    | true                                    |
 | spring.jpa.hibernate.ddl-auto           | Hibernate DDL auto strategy               | create                                  | update                                  |
 | DAPR_GRPC_PORT                          | Dapr gRPC Port                            | -                                       | 50001                                   |
-| keycloak.clientId                       | Port on which the application runs        | admin-cli                               | -                                       |
-| keycloak.masterRealm                    | Port on which the application runs        | master                                  | -                                       |
-| keycloak.realm                          | Port on which the application runs        | GITS                                    | -                                       |
-| keycloak.username                       | Port on which the application runs        | admin                                   | -                                       |
 
 ## API description
 
