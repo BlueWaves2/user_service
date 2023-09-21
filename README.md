@@ -27,10 +27,10 @@ The User Service has two main roles in our system:
 | server.port                | Port on which the application runs | 5001                                          | 5001                                                           |
 | KEYCLOAK_URL               | Keycloak URL                       | http://localhost:9009/                        | http://keycloak/keycloak                                       |
 | KEYCLOAK_PASSWORD          | Keycloak admin password            | admin                                         | *secret*                                                       |
-| keycloak.clientId          | Keycloak client ID                 | admin-cli                                     | -                                                              |
-| keycloak.masterRealm       | Keycloak master realm              | master                                        | -                                                              |
-| keycloak.realm             | Keycloak realm for the application | GITS                                          | -                                                              |
-| keycloak.username          | Keycloak admin username            | admin                                         | -                                                              |
+| keycloak.clientId          | Keycloak client ID                 | admin-cli                                     | admin-cli                                                      |
+| keycloak.masterRealm       | Keycloak master realm              | master                                        | master                                                         |
+| keycloak.realm             | Keycloak realm for the application | GITS                                          | GITS                                                           |
+| keycloak.username          | Keycloak admin username            | admin                                         | admin                                                          |
 
 ### Other properties
 | Name                                    | Description                               | Value in Dev Environment                | Value in Prod Environment               |
