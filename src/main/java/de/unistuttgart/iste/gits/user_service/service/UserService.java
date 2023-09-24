@@ -88,8 +88,7 @@ public class UserService {
                         id,
                         user.getUsername(),
                         user.getFirstName(),
-                        user.getLastName(),
-                        List.of() // course memberships are resolved with schema mapping
+                        user.getLastName()
                 ));
     }
 
