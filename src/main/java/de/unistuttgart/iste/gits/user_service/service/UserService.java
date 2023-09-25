@@ -5,13 +5,14 @@ import de.unistuttgart.iste.gits.generated.dto.UserInfo;
 import de.unistuttgart.iste.gits.user_service.config.KeycloakWrapper;
 import graphql.schema.DataFetchingEnvironment;
 import graphql.schema.SelectedField;
-import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.keycloak.representations.idm.UserRepresentation;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -90,18 +91,6 @@ public class UserService {
                         user.getFirstName(),
                         user.getLastName()
                 ));
-    }
-
-    /**
-     * Get user info by id.
-     *
-     * @param id User id
-     * @return The user info
-     * @throws EntityNotFoundException if the user could not be retrieved.
-     */
-    public UserInfo getUserInfo(UUID id) {
-        return findUserInfo(id)
-                .orElseThrow(() -> new EntityNotFoundException("User with id " + id + " not found"));
     }
 
     private Optional<UserRepresentation> findUser(UUID id) {
