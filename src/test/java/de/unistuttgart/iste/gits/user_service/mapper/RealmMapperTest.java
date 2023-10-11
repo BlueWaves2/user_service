@@ -1,7 +1,7 @@
 package de.unistuttgart.iste.gits.user_service.mapper;
 
 import de.unistuttgart.iste.gits.common.user_handling.LoggedInUser;
-import de.unistuttgart.iste.gits.generated.dto.RealmRoles;
+import de.unistuttgart.iste.gits.generated.dto.GlobalUserRole;
 import org.junit.jupiter.api.Test;
 import org.modelmapper.ModelMapper;
 
@@ -20,9 +20,9 @@ class RealmMapperTest {
         keycloakRealmRoles.add(LoggedInUser.RealmRole.COURSE_CREATOR);
         keycloakRealmRoles.add(LoggedInUser.RealmRole.SUPER_USER);
 
-        final List<RealmRoles> graphQLRoles = realmMapper.internalRolesToGraphQlRoles(keycloakRealmRoles);
+        final List<GlobalUserRole> graphQLRoles = realmMapper.internalRolesToGraphQlRoles(keycloakRealmRoles);
 
-        assertTrue(graphQLRoles.contains(RealmRoles.COURSE_CREATOR));
-        assertTrue(graphQLRoles.contains(RealmRoles.SUPER_USER));
+        assertTrue(graphQLRoles.contains(GlobalUserRole.COURSE_CREATOR));
+        assertTrue(graphQLRoles.contains(GlobalUserRole.SUPER_USER));
     }
 }

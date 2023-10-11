@@ -1,7 +1,7 @@
 package de.unistuttgart.iste.gits.user_service.mapper;
 
 import de.unistuttgart.iste.gits.common.user_handling.LoggedInUser;
-import de.unistuttgart.iste.gits.generated.dto.RealmRoles;
+import de.unistuttgart.iste.gits.generated.dto.GlobalUserRole;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
@@ -18,11 +18,11 @@ public class RealmMapper {
         this.modelMapper = modelMapper;
     }
 
-    public List<RealmRoles> internalRolesToGraphQlRoles (Set<LoggedInUser.RealmRole> realmRoleSet){
-        return realmRoleSet.stream().map(role -> modelMapper.map(role, RealmRoles.class)).toList();
+    public List<GlobalUserRole> internalRolesToGraphQlRoles (Set<LoggedInUser.RealmRole> realmRoleSet){
+        return realmRoleSet.stream().map(role -> modelMapper.map(role, GlobalUserRole.class)).toList();
     }
 
-    public List<RealmRoles> keycloakRolesToGraphQlRoles(List<String> keycloakRoles){
+    public List<GlobalUserRole> keycloakRolesToGraphQlRoles(List<String> keycloakRoles){
         if (keycloakRoles == null){
             return Collections.emptyList();
         }
